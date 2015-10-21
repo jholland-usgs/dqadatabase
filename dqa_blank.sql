@@ -188,7 +188,8 @@ BEGIN
 	FROM tblChannel
 	JOIN tblSensor
 		ON tblChannel.fkSensorID = tblSensor.pkSensorID
-	WHERE tblSensor.fkStationID = any(stationIDs) ;
+	WHERE tblSensor.fkStationID = any(stationIDs)
+	AND NOT tblChannel."isIgnored" ;
 
 	RETURN channelString;
 	
